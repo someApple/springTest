@@ -10,4 +10,7 @@ public class PersonDao implements IPersonDao {
     public String save(){
        return "===========白兰===========";
     }
+    public void pop(){
+        System.out.print("huahua");
+    }
 }
