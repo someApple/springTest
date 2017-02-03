@@ -11,6 +11,6 @@ public class PersonDao implements IPersonDao {
        return "===========白兰===========";
     }
     public void pop(){
-        System.out.print("huahua");
+        System.out.print("bailan");
     }
 }
