@@ -5,4 +5,5 @@ package dao;
  */
 public interface IPersonDao {
     String save();
+    void pop();
 }
