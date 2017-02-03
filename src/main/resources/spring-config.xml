@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+    <!--&lt;!&ndash; 新增横切点&ndash;&gt;
+    <bean id="performanceMonitor"
+          class="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" />
+
+    <aop:config>
+        <aop:pointcut id="allServiceMethods"  expression="execution (* java.*(..))"/>
+        <aop:advisor pointcut-ref="allServiceMethods" advice-ref="performanceMonitor" order="2"/>
+    </aop:config>-->
+    <!-- 自动扫描的包名 -->
+    <!--<context:component-scan base-package="dao"/>-->
+    <!--<context:component-scan base-package="Service"/>-->
+   <!-- <context:component-scan base-package="Bean"/>-->
+    <context:component-scan base-package="zhanghao"/>
+    <!-- 默认的注解映射的支持（不能动，用于加载dispatcher） -->
+    <mvc:default-servlet-handler/>
+    <!-- 对静态资源文件的访问 -->
+    <mvc:annotation-driven/>
+    <!-- 让Spring启用对annotation注解的支持 -->
+    <context:annotation-config/>
+    <!-- 激活自动代理功能 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- 配置bean
+10         class：bean的全类名，通过反射的方式在IOC容器中创建Bean，所以要求Bean中必须有无参数的构造器
+11         id：标识容器中的bean，id唯一。
+12     -->
+    <!--<bean id="personDao" class="dao.PersonDao"></bean>
+    <bean id="personService" class="Service.PersonService">
+        <property name="personDao" ref="personDao"></property>
+    </bean>-->
+    <!--<bean id="personDao" class="dao.PersonDao"></bean>
+    <bean id="personService" class="Service.PersonService"></bean>-->
+    <!--<bean id="car" class="Bean.Car"></bean>-->
+    <!--<bean id="userService" class="Service.UserService"></bean>-->
+        <!--<property name="color" value="红"></property>-->
+<!-- 配置切面通知的bean-->
+    <bean id="MyAdvice" class="zhanghao.MyAdvice"/>
+    <bean id="myService" class="Service.MyService">
+        <property name="person" ref="person"/>
+    </bean>
+    <bean id="person" class="zhanghao.Person">
+        <property name="age" value="18"/>
+        <property name="name" value="云雀"/>
+    </bean>
+    <!-- 设置代理-->
+    <aop:config>
+            <!-- 设置切入点-->
+            <aop:pointcut id="myPointcut1" expression="execution(* Service.MyService.Show(..))"/>
+            <aop:aspect id="my-Aaspect" ref="MyAdvice">
+                <!--<aop:before method="beforeShow" pointcut-ref="myPointcut"/>-->
+                <!-- <aop:after-returning method="afterReturnShow"  pointcut-ref="myPointcut" returning="o"/>
+                <aop:after-throwing method="afterThrowing"  pointcut-ref="myPointcut" throwing="e"/>
+                <aop:after method="afterShow" pointcut-ref="myPointcut"/>-->
+                <aop:around method="Around" pointcut-ref="myPointcut1"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

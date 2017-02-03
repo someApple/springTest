@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+    <name>Xml应用系列教程</name>
+    <auhtor>学路的小孩</auhtor>
+    <date>2009-03-23</date>
+    </book>
+    <book>
+    <name>Xml应用系列教程2</name>
+    <auhtor>学路的小孩2</auhtor>
+    <date>2009-03-232</date>
+    </book>
+</books>
