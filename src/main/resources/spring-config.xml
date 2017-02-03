@@ -19,9 +19,9 @@
         <aop:advisor pointcut-ref="allServiceMethods" advice-ref="performanceMonitor" order="2"/>
     </aop:config>-->
     <!-- 自动扫描的包名 -->
-    <!--<context:component-scan base-package="dao"/>-->
-    <!--<context:component-scan base-package="Service"/>-->
-   <!-- <context:component-scan base-package="Bean"/>-->
+    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="Service"/>
+    <context:component-scan base-package="Bean"/>
     <context:component-scan base-package="zhanghao"/>
     <!-- 默认的注解映射的支持（不能动，用于加载dispatcher） -->
     <mvc:default-servlet-handler/>
@@ -35,12 +35,12 @@
 10         class：bean的全类名，通过反射的方式在IOC容器中创建Bean，所以要求Bean中必须有无参数的构造器
 11         id：标识容器中的bean，id唯一。
 12     -->
-    <!--<bean id="personDao" class="dao.PersonDao"></bean>
+    <!--&lt;!&ndash;<bean id="personDao" class="dao.PersonDao"></bean>-->
     <bean id="personService" class="Service.PersonService">
         <property name="personDao" ref="personDao"></property>
-    </bean>-->
-    <!--<bean id="personDao" class="dao.PersonDao"></bean>
-    <bean id="personService" class="Service.PersonService"></bean>-->
+    </bean>
+    <bean id="personDao" class="dao.PersonDao"></bean>
+    <!--<bean id="personService" class="Service.PersonService"></bean>-->
     <!--<bean id="car" class="Bean.Car"></bean>-->
     <!--<bean id="userService" class="Service.UserService"></bean>-->
         <!--<property name="color" value="红"></property>-->
@@ -62,7 +62,7 @@
                 <!-- <aop:after-returning method="afterReturnShow"  pointcut-ref="myPointcut" returning="o"/>
                 <aop:after-throwing method="afterThrowing"  pointcut-ref="myPointcut" throwing="e"/>
                 <aop:after method="afterShow" pointcut-ref="myPointcut"/>-->
-                <aop:around method="Around" pointcut-ref="myPointcut1"/>
+                <!--<aop:around method="Around" pointcut-ref="myPointcut1"/>-->
         </aop:aspect>
     </aop:config>
 </beans>

@@ -12,16 +12,22 @@ import javax.annotation.Resource;
 @Service("personService")
 public class PersonService implements IPersonService {
     @Resource
-    private PersonDao personDao ;
+    private PersonDao personDao;
+
     /*private PersonDao personDao;*/
     public String processSave(){
         return "=====PersonService.processSave()======100"+personDao.save();
 
     }
-   /* public void setPersonDao(PersonDao personDao) {
+
+  /*  public void setPersonDao(PersonDao personDao) {
         this.personDao = personDao;
     }
 
+    *//*public void setPersonDao(PersonDao personDao) {
+        this.personDao = personDao;
+    }
+*//*
     public PersonDao getPersonDao() {
         return personDao;
     }*/
