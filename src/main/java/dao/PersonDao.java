@@ -12,5 +12,9 @@ public class PersonDao implements IPersonDao {
     }
     public void pop(){
         System.out.print("bailan");
+        System.out.print("bailan");
+        System.out.print("bailan");
+        System.out.print("bailan");
+        System.out.print("bailan");
     }
 }
